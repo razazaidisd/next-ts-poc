@@ -1,0 +1,21 @@
+# docker-compose.yml
+
+version: "3"
+
+services:
+  nexttspoc.ws:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mono_fe
+    restart: always
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    networks:
+      default:
+        aliases:
+        - nexttspoc.ws
+    ports:
+      - 3000:3000
